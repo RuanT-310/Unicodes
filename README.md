@@ -13,11 +13,20 @@
 
 ## Resumo das atividades feitas
 1. Criação da Rede Docker: Uma rede Docker com subnet 172.21.0.0/16 foi estabelecida para isolamento e controle dos IPs dos nós.
-2. Preparação dos Containers: Cada container (ubuntu:22.04) foi configurado com um script de inicialização (start_etcd.sh) que realiza as seguintes tarefas:
+```
+docker network create --subnet=172.21.0.0/16 dist-sys-net
+```
+3. Preparação dos Containers: Cada container (ubuntu:22.04) foi configurado com um script de inicialização (start_etcd.sh) que realiza as seguintes tarefas:
   - Instalação de pré-requisitos (wget, curl, iputils-ping, python3, python3-pip).
   - Download, extração e instalação dos binários do etcd (v3.5.6) em /usr/local/bin/.
   - Criação do diretório de dados para o etcd (/var/lib/etcd).
 3. Inicialização do processo etcd em foreground
+```
+docker run -d --name mx-nodel --ip 172.21.0.10 --network dist-sys-net `
+  -e NODE_NAME=mx-nodel `
+  -v "${PWD}/start_etcd.sh:/start_etcd.sh" `
+  ubuntu:22.04 /start_etcd.sh
+```
 
 # Demostração da atividade pedidas
 https://github.com/user-attachments/assets/fb28969a-4209-48a7-8ba1-de7ece6af75a
