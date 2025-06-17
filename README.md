@@ -1,24 +1,22 @@
 # Nomeação e Sincronizacão de Tempo
 ## Alunos
-- Ruan Vieira - 202240602029
+- Ruan Vieira
 - Nicolas
 - Noé Luiz
 
 ## Professor
-- Warley - Unifesspa
-
-### Disciplina 
-- Sistemas Distribuidos
+- Warley - Unifesspa - Sistemas Distribuidos
 
 ## Resumo das atividades feitas
 1. Criação da Rede Docker: Uma rede Docker com subnet 172.21.0.0/16 foi estabelecida para isolamento e controle dos IPs dos nós.
 ```
 docker network create --subnet=172.21.0.0/16 dist-sys-net
 ```
-3. Preparação dos Containers: Cada container (ubuntu:22.04) foi configurado com um script de inicialização (start_etcd.sh) que realiza as seguintes tarefas:
-  - Instalação de pré-requisitos (wget, curl, iputils-ping, python3, python3-pip).
-  - Download, extração e instalação dos binários do etcd (v3.5.6) em /usr/local/bin/.
-  - Criação do diretório de dados para o etcd (/var/lib/etcd).
+2. Containers Docker padrão não rodam systemd como seu processo de inicialização (PID 1). Isso significa que comandos como systemctl start my-service não funcionam como fariam em uma VM completa. Por isso utilizamos um script externo ao container (start_etcd.sh), que realiza as seguintes tarefas.
+    - Instalação de pré-requisitos (wget, curl, iputils-ping, python3, python3-pip).
+    - Download, extração e instalação dos binários do etcd (v3.5.6) em /usr/local/bin/.
+    - Criação do diretório de dados para o etcd (/var/lib/etcd).
+4. Preparação dos Containers: Cada container (ubuntu:22.04) foi configurado com o script de inicialização (start_etcd.sh)
 3. Inicialização do processo etcd em foreground
 ```
 docker run -d --name mx-nodel --ip 172.21.0.10 --network dist-sys-net `
