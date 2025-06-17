@@ -26,7 +26,10 @@ docker run -d --name mx-nodel --ip 172.21.0.10 --network dist-sys-net `
 ```
 
 # Demostração da atividade pedidas
-https://github.com/user-attachments/assets/fb28969a-4209-48a7-8ba1-de7ece6af75a
+
+
+https://github.com/user-attachments/assets/560a2d12-53d1-4d1c-a4cf-6d098b0f8817
+
 
 # Respostas da atividade
 1. Tempo medio para eleição do lider
@@ -44,10 +47,7 @@ O etcd resolve conflitos de atualização simultânea de uma chave usando o algo
 4. ### Relógio de Lamport com IDs de processo:
 Cada processo mantém um relógio local (C_i) e um ID. Ao atualizar (enviar "mensagem" via etcd), C_i é incrementado, atualizado para max(C_i, C_global_etcd) + 1, e salvo no etcd com o ID do processo. Ao ler (receber "mensagem"), C_i é atualizado para max(C_i, C_global_recebido) + 1.
 
-
-https://github.com/user-attachments/assets/6aedb885-6759-4299-ad25-b8146a7fe4cf
-
-
+https://github.com/user-attachments/assets/b2c7a38e-7a34-414e-af28-b838f78bcd40
 
 6. ### Latência de leitura ('linearizable' vs `serializable`):
 * **`linearizable` (linearizável):** Possui maior latência, pois exige comunicação com o líder e validação de quorum para garantir a versão mais recente dos dados:
