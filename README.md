@@ -1,5 +1,4 @@
-# Relatório: SingleClient x MultiClient
-
+# Nomeação e Sincronizacão de Tempo
 ## Alunos
 - Ruan Vieira - 202240602029
 - Nicolas
