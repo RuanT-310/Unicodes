@@ -17,7 +17,9 @@ expo-env.d.ts
 *.p12
 *.key
 *.mobileprovision
-
+.venv
+.vscode
+__pycache__
 # Metro
 .metro-health-check*
 
