@@ -52,7 +52,7 @@ export function Home() {
         value={text}
         onChangeText={setText}
         />
-        <Button title='Adicionar' onPress={() => handleAddItem(text)}/>
+        <Button title='Adicionar' onPress={() => handleAddItem(text)} disabled={!text}/>
       <StatusBar style="auto" />
       <View style={styles.listContainer}>
         <Tabs

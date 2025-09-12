@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import {CircleDashedIcon, CircleCheckIcon, Trash2Icon} from "lucide-react-native"
 import { styles } from './styles';
 import { HrLine } from '../HrLine';
 import { ShoppingItem } from '@/interfaces/shopping-item';
@@ -15,9 +15,9 @@ export const ListItem: React.FC<Props> = ({ item, onToggle, onDelete }) => {
       <View style={styles.pressContent}>
         <TouchableOpacity onPress={() => onToggle(item.id)}>
           {item.isCompleted ? (
-            <Icon name="check-circle" size={20} color="#2C46B1" />
+            <CircleCheckIcon size={20} color="#2C46B1" />
           ) : (
-            <Icon name="circle" size={20} color="#1E1E1E" />
+            <CircleDashedIcon size={20} color="#1E1E1E" />
           )}
         </TouchableOpacity>
         <Text>
@@ -25,7 +25,7 @@ export const ListItem: React.FC<Props> = ({ item, onToggle, onDelete }) => {
         </Text>
       </View>
       <TouchableOpacity onPress={() => onDelete(item.id)} >
-        <Icon name="trash-2" size={20} color="#828282" />
+        <Trash2Icon size={20} color="#828282" />
       </TouchableOpacity>
     </View>
     <HrLine marginTop={1}/>
